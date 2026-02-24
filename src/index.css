@@ -1,3 +1,28 @@
+/* ============================================================
+   UYGULAMA-6: Temel CSS Sıfırlama
+   ============================================================ */
+
+/* Genel sıfırlama — tüm elementlerin margin/padding/box-sizing'ini sıfırlar */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ====== CLS ÖNLEME: Görseller için alan rezervasyonu ====== */
+/* width/height HTML attribute'u + bu CSS → CLS sıfıra iner  */
+img {
+  max-width: 100%;
+  height: auto;
+  /* Oranı koru */
+  display: block;
+  /* Alt boşluk (inline gap) yok */
+}
+
+figure img {
+  border-radius: 8px;
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -15,17 +40,62 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+  /* Koyu temada: #a5b4fc → kontrast oranı ~8.0:1 ✅ WCAG AA */
+  color: #a5b4fc;
+  text-decoration: underline;
+  /* Alt çizgi → link olduğu net görülür */
+  text-underline-offset: 3px;
 }
+
 a:hover {
-  color: #535bf2;
+  color: #c4b5fd;
+  /* hover → daha açık, yine kontrastlı */
+}
+
+/* ====== ERİŞİLEBİLİRLİK: Focus Göstergesi — ASLA kaldırma! ====== */
+/* Tüm interaktif elementleri kapsar: a, button, input, select, textarea... */
+:focus {
+  outline: 2px solid #2563EB;
+  outline-offset: 2px;
+}
+
+/* Daha modern tarayıcılarda yalnızca klavye odağında göster */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid #2563EB;
+  outline-offset: 2px;
+}
+
+/* ====== SKIP LİNK (Ana İçeriğe Atla) ====== */
+/* Normalde gizli, Tab ile odaklanınca ekranda belirir */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  /* Ödev spesifikasyonu */
+  left: 0;
+  background: #1E3A8A;
+  /* Ödev spesifikasyonu: koyu lacivert */
+  color: white;
+  padding: 8px 16px;
+  z-index: 100;
+  text-decoration: none;
+  font-weight: 700;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  top: 0;
+  /* Tab'a basınca yukarı çıkar */
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
+  font-family: system-ui, sans-serif;
+  /* Ödev spesifikasyonu */
+  line-height: 1.6;
+  /* Ödev spesifikasyonu */
   min-width: 320px;
   min-height: 100vh;
 }
@@ -46,12 +116,9 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
 @media (prefers-color-scheme: light) {
@@ -59,10 +126,152 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
-  a:hover {
-    color: #747bff;
+
+  /* Açık temada: #4338ca → kontrast oranı ~7.2:1 ✅ WCAG AA */
+  a {
+    color: #4338ca;
   }
+
+  a:hover {
+    color: #3730a3;
+  }
+
   button {
     background-color: #f9f9f9;
+    color: #213547;
+    /* Koyu metin açık buton üzerinde ✅ */
+  }
+}
+
+/* ============================================================
+   FORM STİLLERİ — Uygulama-4 & 6
+   ============================================================ */
+
+fieldset {
+  border: 1px solid #444;
+  border-radius: 10px;
+  padding: 1.5rem 2rem;
+  max-width: 540px;
+  margin: 1.5rem auto;
+}
+
+legend {
+  font-weight: 700;
+  font-size: 1.1em;
+  padding: 0 0.5rem;
+  /* Koyu temada: #a5b4fc → ~8.0:1 kontrast ✅ */
+  color: #a5b4fc;
+}
+
+/* Her alan grubu: label + input + hata mesajı — Ödev-6 */
+.form-group {
+  margin-bottom: 1rem;
+  /* Ödev spesifikasyonu */
+  text-align: left;
+}
+
+label {
+  display: block;
+  /* Ödev spesifikasyonu */
+  margin-bottom: 0.25rem;
+  /* Ödev spesifikasyonu */
+  font-weight: 500;
+}
+
+/* Ortak input / select / textarea stili — Ödev-6 */
+input,
+select,
+textarea {
+  width: 100%;
+  /* Tam genişlik */
+  padding: 0.5rem;
+  /* Ödev spesifikasyonu */
+  border: 1px solid #ccc;
+  /* Ödev spesifikasyonu */
+  border-radius: 4px;
+  /* Ödev spesifikasyonu */
+  font-size: 1em;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  color: inherit;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #2563EB;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
+}
+
+/* Doğrulama başarısız → kırmızı çerçeve */
+.form-group input:not(:placeholder-shown):invalid,
+.form-group textarea:not(:placeholder-shown):invalid {
+  border-color: #e74c3c;
+}
+
+/* Hata mesajı alanı — Ödev-6 */
+.error-msg {
+  color: red;
+  /* Ödev spesifikasyonu */
+  font-size: 0.85rem;
+  /* Ödev spesifikasyonu */
+  min-height: 1em;
+  /* Boşken alan kaplar, kayma olmaz */
+  display: block;
+}
+
+/* Gönder butonu */
+form button[type="submit"] {
+  width: 100%;
+  margin-top: 0.5rem;
+  /* #4f46e5 + beyaz metin → kontrast ~5.1:1 ✅ WCAG AA */
+  background-color: #4f46e5;
+  color: #ffffff;
+  border-color: transparent;
+  font-size: 1em;
+  padding: 0.7em;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+form button[type="submit"]:hover {
+  background-color: #4338ca;
+  /* Hover → daha koyu, kontrast artar */
+}
+
+form button[type="submit"]:active {
+  transform: scale(0.98);
+}
+
+/* Açık tema uyumu */
+@media (prefers-color-scheme: light) {
+
+  input,
+  select,
+  textarea {
+    background-color: #f5f5f5;
+    border-color: #ccc;
+    color: #213547;
+  }
+
+  fieldset {
+    border-color: #ccc;
+  }
+
+  /* Açık temada legend: #4338ca → ~7.2:1 kontrast ✅ */
+  legend {
+    color: #4338ca;
+  }
+
+  /* Açık temada submit butonu da güncelle */
+  form button[type="submit"] {
+    background-color: #4338ca;
+    color: #ffffff;
+  }
+
+  form button[type="submit"]:hover {
+    background-color: #3730a3;
   }
 }
