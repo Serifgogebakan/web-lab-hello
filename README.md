@@ -3,27 +3,16 @@
 ## Hakkinda
 Bu proje, Web Tasarimi ve Programlama dersi LAB-1 kapsaminda
 Vite + React + TypeScript kullanilarak olusturulmustur.
-Semantik HTML yapisi, erisilebilirlik (WCAG AA) ve performans
-optimizasyonlari uygulanmistir.
 
 ## Gelistirici
 - **Ad Soyad:** Şerif Miraç Gögebakan
 - **Ogrenci No:** 230541126
-- **Bolum:** Bilgisayar Muhendisligi
+- **Bolum:** Yazılım Muhendisligi
 
 ## Kullanilan Teknolojiler
 - React 18
 - TypeScript
 - Vite
-
-## Uygulanan Ozellikler
-- Semantik HTML5 iskeleti (`header`, `nav`, `main`, `section`, `footer`)
-- `aria-label`, `aria-describedby`, `role="alert"` ile ARIA destegi
-- Skip-link (klavye navigasyonu)
-- Dogrulamali iletisim formu (`novalidate`, `required`, `minlength`)
-- WCAG AA uyumlu renk kontrastlari
-- CLS onleme: gorsellere `width`/`height` atributu
-- SEO: `meta description`, `lang="tr"`, anlamli `<title>`
 
 ## Kurulum
 ```bash
