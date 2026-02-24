@@ -1,0 +1,5 @@
+﻿605d014 docs: sync README on feature branch
+b7d1b78 style: revert inline styles and format App.tsx
+9780abd style: update page styling and layout
+db2429d feat: add personal details to homepage
+e1b5c2f chore: initial project setup with Vite + React + TS
