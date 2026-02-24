@@ -32,25 +32,10 @@ npm install
 
 ## Calistirma (Gelistirme)
 ```bash
-npm run dev
-```
-Tarayicida http://localhost:5173 adresini ac.
-
-## Production Build & Onizleme
-```bash
 npm run build
 npx vite preview --port 4173
 ```
 Tarayicida http://localhost:4173 adresini ac.
-
-## Lighthouse Sonuclari
-
-| Metrik | Puan |
-|--------|------|
-| Performance | 90+ |
-| **Accessibility** | **100** ✅ |
-| Best Practices | 100 |
-| SEO | 100 |
 
 ### Ekran Goruntuleri
 ![Lighthouse Accessibility 100](public/Ekran%20görüntüsü%202026-02-24%20162650.png)
