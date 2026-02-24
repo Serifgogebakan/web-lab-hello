@@ -8,7 +8,7 @@ function App() {
       <p>Bölüm: Bilgisayar Mühendisliği</p>
       <p>
         Hobiler: Rekabetçi ve hikaye tabanlı bilgisayar oyunları oynamak, Arduino ve Raspberry Pi
-        gibi geliştirme kartlarıyla kendi elektronik donanım projelerimi tasarlamak.
+        gibi geliştirme kartlarıyla kendi elektronik donanım projelerimi tasarlamak
       </p>
     </div>
   );
