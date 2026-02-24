@@ -1,6 +1,6 @@
 function App() {
   return (
-    <div className="container">
+    <div className="container" style={{ margin: '20px', padding: '15px', backgroundColor: '#f0f0f0', borderRadius: '8px' }}>
       <h1>Web Tasarimi ve Programlama</h1>
       <h2>LAB-1</h2>
       <p>Ad Soyad: [Şerif Miraç Gögebakan]</p>
